@@ -5,9 +5,18 @@ int[] y;
 int npoints = 0;
 int lastmouse = -1;
 int lastkey = -1;
+PImage img, shade;
 
 void setup() {
-  size(500, 500);
+
+  img = loadImage("/home/scameron/myimage.jpg");
+
+  shade = createImage(img.width, img.height, RGB);
+  for (int i = 0; i < img.pixels.length; i++) {
+    shade.pixels[i] = color(100, 100, 100); 
+  }
+
+  size(img.width, img.height);
   background(0);
   x = new int[maxpoints];
   y = new int[maxpoints];
@@ -23,6 +32,8 @@ void draw()
 
 	stroke(255);
 	background(0);
+	image(img, 0, 0);
+	blend(shade, 0, 0, img.width, img.height, 0, 0, img.width, img.height, MULTIPLY);
 
 	for (i = 0; i < npoints - 1; i++) {
 		if (x[i + 1] == -9999) {
