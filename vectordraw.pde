@@ -5,6 +5,8 @@ int[] y;
 int npoints = 0;
 int lastmouse = -1;
 int lastkey = -1;
+int originx = 0;
+int originy = 0;
 PImage img, shade;
 
 void setup() {
@@ -18,6 +20,8 @@ void setup() {
 
   size(img.width, img.height);
   background(0);
+  originx = img.width / 2;
+  originy = img.height / 2;
   x = new int[maxpoints];
   y = new int[maxpoints];
 }
@@ -34,6 +38,9 @@ void draw()
 	background(0);
 	image(img, 0, 0);
 	blend(shade, 0, 0, img.width, img.height, 0, 0, img.width, img.height, MULTIPLY);
+
+	line(originx, 0, originx, img.height);
+	line(0, originy, img.width, originy);
 
 	for (i = 0; i < npoints - 1; i++) {
 		if (x[i + 1] == -9999) {
@@ -101,7 +108,8 @@ void dump_data()
 
 	println("{");
 	for (i = 0; i < npoints; i++) {
-		println("	{ " + x[i] + ", " + (y[i] - maxy) + " },");
+		println("	{ " + (x[i] - originx) + ", " +
+			((y[i] - maxy) - (originy - maxy)) + " },");
 	}
 	println("}");
 }
