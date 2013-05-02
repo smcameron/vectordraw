@@ -123,5 +123,9 @@ void keyReleased()
 			npoints--;
 		}
 	}
+	if (lastkey == 'o') {
+		originx = mouseX;
+		originy = mouseY;
+	}
 }
 
