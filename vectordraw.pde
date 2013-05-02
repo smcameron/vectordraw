@@ -8,6 +8,7 @@ int lastkey = -1;
 int originx = 0;
 int originy = 0;
 PImage img, shade;
+int lift_pen = -9999;
 
 void setup() {
 
@@ -43,7 +44,7 @@ void draw()
 	line(0, originy, img.width, originy);
 
 	for (i = 0; i < npoints - 1; i++) {
-		if (x[i + 1] == -9999) {
+		if (x[i + 1] == lift_pen) {
 			i++;
 			continue;
 		} else {
@@ -70,8 +71,8 @@ void mouseReleased() {
 			npoints--;
 	}
 	if (lastmouse == 3) {
-		x[npoints] = -9999;
-		y[npoints] = -9999;
+		x[npoints] = lift_pen;
+		y[npoints] = lift_pen;
 	}
 	npoints++;
 }
@@ -108,8 +109,12 @@ void dump_data()
 
 	println("{");
 	for (i = 0; i < npoints; i++) {
-		println("	{ " + (x[i] - originx) + ", " +
-			((y[i] - maxy) - (originy - maxy)) + " },");
+		if (x[i] != lift_pen) {
+			println("	{ " + (x[i] - originx) + ", " +
+				((y[i] - maxy) - (originy - maxy)) + " },");
+		} else {
+			println("	{ " + (x[i]) + ", " + (y[i]) + " },");
+		}
 	}
 	println("}");
 }
