@@ -8,7 +8,7 @@ int lastkey = -1;
 int originx = 0;
 int originy = 0;
 PImage img, shade;
-int lift_pen = -9999;
+int lift_pen = -128;
 
 void setup() {
 
@@ -19,7 +19,7 @@ void setup() {
     shade.pixels[i] = color(100, 100, 100); 
   }
 
-  size(img.width, img.height);
+  size(512, 512);
   background(0);
   originx = img.width / 2;
   originy = img.height / 2;
@@ -48,7 +48,7 @@ void draw()
 			i++;
 			continue;
 		} else {
-			line(x[i], y[i], x[i + 1], y[i + 1]);
+			line(x[i] * 2, y[i] * 2, x[i + 1] * 2, y[i + 1] * 2);
 		}
 	}
 
@@ -57,14 +57,14 @@ void draw()
 
 	x1 = x[npoints - 1];
 	y1 = y[npoints - 1];
-	line(x1 - 5, y1, x1 + 5, y1);
-	line(x1, y1 - 5, x1, y1 + 5);
+	line(x1 * 2 - 5, y1 * 2, x1 * 2 + 5, y1 * 2);
+	line(x1 * 2, y1 * 2 - 5, x1 * 2, y1 * 2 + 5);
 }
 
 void mouseReleased() {
 	if (lastmouse == 1) {
-		x[npoints] = mouseX;
-		y[npoints] = mouseY;
+		x[npoints] = mouseX / 2;
+		y[npoints] = mouseY / 2;
 	}
 	if (lastmouse == 2) {
 		if (npoints > 0)
@@ -110,8 +110,8 @@ void dump_data()
 	println("{");
 	for (i = 0; i < npoints; i++) {
 		if (x[i] != lift_pen) {
-			println("	{ " + (x[i] - originx) + ", " +
-				((y[i] - maxy) - (originy - maxy)) + " },");
+			println("	{ " + (x[i] - originx / 2) + ", " +
+				((y[i] - maxy) - (originy / 2 - maxy)) + " },");
 		} else {
 			println("	{ " + (x[i]) + ", " + (y[i]) + " },");
 		}
