@@ -8,6 +8,8 @@ darkened, and displayed in a 512x512 window with an axis superimposed on it.
 
 You can then draw with the mouse, tracing over the image.
 
+![Image of vectordraw in action](./vectrodraw.jpg?raw=true "vectordraw in action")
+
 * Mouse button 1 (left mouse button) draws a line from the last position clicked to the current mouse position.
 * Mouse button 2 (middle mouse button) backspace (erases the last clicked point from existence.)
 * Mouse button 3 (right mouse button) lifts the pen.
