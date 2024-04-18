@@ -8,13 +8,12 @@ darkened, and displayed in a 512x512 window with an axis superimposed on it.
 
 You can then draw with the mouse, tracing over the image.
 
-Mouse button 1 (left mouse button) draws a line from the last position clicked to the current mouse position.
-Mouse button 2 (middle mouse button) backspace (erases the last clicked point from existence.)
-Mouse button 3 (right mouse button) lifts the pen.
-
-Backspace key does the same thing as mouse button 2.
-The 'o' key moves the origin to the current mouse position.
-The spacebar causes the program to "dump out" the data to stdout.
+* Mouse button 1 (left mouse button) draws a line from the last position clicked to the current mouse position.
+* Mouse button 2 (middle mouse button) backspace (erases the last clicked point from existence.)
+* Mouse button 3 (right mouse button) lifts the pen.
+* Backspace key does the same thing as mouse button 2.
+* The 'o' key moves the origin to the current mouse position.
+* The spacebar causes the program to "dump out" the data to stdout.
 
 The coordinates recorded are scaled down into the range -128 to +127 before being output
 (so that they fit into a signed char).  "Pen lifts" are recorded as { -128, -128 },
